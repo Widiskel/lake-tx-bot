@@ -19,6 +19,8 @@ export class Lake {
         this.wallet = ethers.Wallet.fromPhrase(data, this.provider);
       } else if (type == "Private Key") {
         this.wallet = new ethers.Wallet(data.trim(), this.provider);
+      } else {
+        throw Error("Invalid account Secret Phrase or Private Key");
       }
       logger.info(`Wallet connected ${JSON.stringify(this.wallet)}`);
       console.log(`-> Wallet Connected ${this.wallet.address}`);
