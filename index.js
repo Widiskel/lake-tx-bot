@@ -1,6 +1,7 @@
 import { account } from "./account.js";
 import { Config } from "./src/config/config.js";
 import { Lake } from "./src/core/lake.js";
+import { Helper } from "./src/utils/helper.js";
 import logger from "./src/utils/logger.js";
 
 async function operation(acc) {
@@ -62,6 +63,9 @@ async function process() {
   }
   console.log(`All account processed`);
   logger.info(`LAKE AUTO TX BOT FINISHED`);
+  console.log(`Delaying for 1 day`);
+  await Helper.delay(1000 * 3600 * 24);
+  await process();
 }
 
 (async () => {
